@@ -3,5 +3,8 @@
     "description": "database for university wits faculties and stu",
     "type": "project",
     "license": "MaxovskiyLic",
-    "require": {}
+    "require": {
+        "twig/twig": "^1.27",
+        "fzaninotto/faker": "^1.6"
+    }
 }
