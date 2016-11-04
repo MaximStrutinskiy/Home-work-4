@@ -1,0 +1,7 @@
+{
+    "name": "vendor/university",
+    "description": "database for university wits faculties and stu",
+    "type": "project",
+    "license": "MaxovskiyLic",
+    "require": {}
+}
