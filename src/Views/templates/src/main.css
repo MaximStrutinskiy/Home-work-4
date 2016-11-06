@@ -47,7 +47,7 @@
 .content-section a{
     color: #f16868;
     display: inline-block;
-    margin: 25px 0;
+    margin: 25px 10px;
     padding: 10px 25px;
     border: 2px solid #f16868;
     -webkit-transition: all .3s ease;
@@ -68,4 +68,9 @@
 
 .content-section a b{
     padding-left: 5px;
+}
+
+.content-section a.active{
+    color: white;
+    background: #f16868;
 }

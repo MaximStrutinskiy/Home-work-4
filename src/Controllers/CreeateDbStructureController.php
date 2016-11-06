@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-use Repositories\creeateDbStructureRepository;
+use Repositories\CreeateDbStructureRepository\CreeateDbStructureRepository;
 use Views\Renderer;
 
 class CreeateDbStructureController
@@ -19,27 +19,41 @@ class CreeateDbStructureController
     public function __construct($connector)
     {
         $this->connector = $connector;
-        $this->loader = new \Twig_Loader_Filesystem('src/Views/templates/');
-        $this->twig = new \Twig_Environment($this->loader, array(
-            'cache' => false,
-        ));
-    }
 
-    public function creeateDbStructureAction()
-    {
-        $this->repository = new creeateDbStructureRepository($this->connector);
         $this->loader = new \Twig_Loader_Filesystem('src/Views/templates/');
         $this->twig = new \Twig_Environment($this->loader, array(
             'cache' => false,
         ));
 
-        $resultsData = array();
-        return $this->twig->render('creeateDbStructure-success.html.twig', ['index' => $resultsData]);
+        $this->repository = new CreeateDbStructureRepository($this->connector);
     }
+
 
     public function indexAction()
     {
         $resultsData = array();
-        return $this->twig->render('creeateDbStructure.html.twig', ['index' => $resultsData]);
+
+
+        $results_check = $this->repository->checkDatabase();
+        $results_chose = $this->repository->chooseTemplate($results_check);
+
+        if ($results_chose)
+        {
+            $resultsTemplate = 'creeateDbStructure-error.html.twig';
+        }else{
+            $resultsTemplate = 'creeateDbStructure.html.twig';
+        }
+
+        return $this->twig->render($resultsTemplate, ['index' => $resultsData]);
+    }
+
+    public function creeateDbStructureAction()
+    {
+        $this->repository->generateDbTables();
+
+        $resultsData = array();
+        $resultsTemplate = 'creeateDbStructure-success.html.twig';
+
+        return $this->twig->render($resultsTemplate, ['index' => $resultsData]);
     }
 }

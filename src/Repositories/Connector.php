@@ -17,9 +17,8 @@ class Connector
     {
         $this->pdo = new \PDO('mysql:host=localhost;dbname=' . $databasename . ';charset=UTF8', $user, $pass);
         if (!$this->pdo) {
-            echo "error connect to db";
+            return false;
         }
-
     }
 
     public function getPdo()
