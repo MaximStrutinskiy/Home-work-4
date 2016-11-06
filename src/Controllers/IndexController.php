@@ -2,11 +2,8 @@
 
 namespace Controllers;
 
-use Views\Renderer;
-
 class IndexController
 {
-
     private $loader;
 
     private $twig;

@@ -3,11 +3,9 @@
 namespace Controllers;
 
 use Repositories\CreeateDbStructureRepository\CreeateDbStructureRepository;
-use Views\Renderer;
 
 class CreeateDbStructureController
 {
-
     private $repository;
 
     private $loader;
@@ -28,19 +26,16 @@ class CreeateDbStructureController
         $this->repository = new CreeateDbStructureRepository($this->connector);
     }
 
-
     public function indexAction()
     {
         $resultsData = array();
 
-
         $results_check = $this->repository->checkDatabase();
         $results_chose = $this->repository->chooseTemplate($results_check);
 
-        if ($results_chose)
-        {
+        if ($results_chose) {
             $resultsTemplate = 'creeateDbStructure-error.html.twig';
-        }else{
+        } else {
             $resultsTemplate = 'creeateDbStructure.html.twig';
         }
 

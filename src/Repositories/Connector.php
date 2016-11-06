@@ -8,14 +8,15 @@ class Connector
 
     /**
      * StudentsRepository constructor.
-     * Initialize the database connection with sql server via given credentials
+     * Initialize the database connection with sql server via given credentials.
+     *
      * @param $databasename
      * @param $user
      * @param $pass
      */
     public function __construct($databasename, $user, $pass)
     {
-        $this->pdo = new \PDO('mysql:host=localhost;dbname=' . $databasename . ';charset=UTF8', $user, $pass);
+        $this->pdo = new \PDO('mysql:host=localhost;dbname='.$databasename.';charset=UTF8', $user, $pass);
         if (!$this->pdo) {
             return false;
         }

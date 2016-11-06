@@ -1,13 +1,15 @@
 <?php
 
 namespace Repositories\CreeateDbStructureRepository;
+
 use Repositories\Connector;
 
 class CreeateDbStructureRepository implements CreeateDbStructureInterface
 {
     public $connector;
 
-    function __construct($connector){
+    public function __construct($connector)
+    {
         $this->connector = $connector;
     }
 
@@ -18,6 +20,7 @@ class CreeateDbStructureRepository implements CreeateDbStructureInterface
             SELECT * FROM university
         ');
         $statement->execute();
+
         return $this->fetchResultsData($statement);
     }
 
@@ -26,7 +29,7 @@ class CreeateDbStructureRepository implements CreeateDbStructureInterface
         $results = [];
         while ($result = $statement->fetch()) {
             $results[] = [
-                'id_university' => $result['id_university']
+                'id_university' => $result['id_university'],
             ];
         }
 
@@ -34,10 +37,11 @@ class CreeateDbStructureRepository implements CreeateDbStructureInterface
     }
 
     //если таблица существует - тогда true, иначе false
-    public function chooseTemplate($results){
+    public function chooseTemplate($results)
+    {
         if ($results) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -45,6 +49,14 @@ class CreeateDbStructureRepository implements CreeateDbStructureInterface
     //функция генерации страницы
     public function generateDbTables()
     {
-        echo "DB is generated";
+        generateDBTableUniversity();
+    }
+
+    private function generateDBTableUniversity()
+    {
+        $statement = $this->connector->getPdo()->prepare('
+        // query
+        ');
+        $statement->execute();
     }
 }
