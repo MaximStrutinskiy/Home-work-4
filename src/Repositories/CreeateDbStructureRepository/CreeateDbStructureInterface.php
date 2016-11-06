@@ -6,7 +6,7 @@ interface CreeateDbStructureInterface
 {
     public function checkDatabase();
 
-    public function chooseTemplate($results);
-
     public function generateDbTables();
+
+    public function chooseTemplate($results);
 }
