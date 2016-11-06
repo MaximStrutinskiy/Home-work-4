@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*section-mainNavigation*/
+.section-mainNavigation{
+    background: #333;
+}
+
+.section-mainNavigation ul{
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+}
+
+.section-mainNavigation ul li{
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.section-mainNavigation ul li a{
+    color: white;
+    text-transform: uppercase;
+}
+
+.section-mainNavigation ul li a:hover,
+.section-mainNavigation ul li a:focus,
+.section-mainNavigation ul li a.active{
+    color: #f16868;
+    text-decoration: none;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+/*homepage-section*/
+.content-section{
+    padding: 100px 0;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.content-section a{
+    color: #f16868;
+    display: inline-block;
+    margin: 25px 0;
+    padding: 10px 25px;
+    border: 2px solid #f16868;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    text-transform: uppercase;
+}
+
+.content-section a:hover,
+.content-section a:focus{
+    text-decoration: none;
+
+    color: white;
+    background: #f16868;
+}
+
+.content-section a b{
+    padding-left: 5px;
+}

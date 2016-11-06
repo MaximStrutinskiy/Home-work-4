@@ -1,0 +1,11 @@
+{% extends "main.html.twig" %}
+
+{% block classCreeateDatabase %}active{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <h1>Creeate database structure</h1>
+        <p>Press the button, and php automatically generated database with students, teachers, courses...</p>
+        <a href="index.php?controller=creeateDbStructure&action=creeateDbStructure"><i class="glyphicon glyphicon-wrench"></i><b>Generate structure DB</b></a>
+    </div>
+{% endblock %}

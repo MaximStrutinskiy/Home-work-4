@@ -13,7 +13,6 @@ class Renderer
 
     public function render($template, $data)
     {
-
         var_dump($data);
     }
 }
