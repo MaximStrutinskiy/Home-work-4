@@ -1,0 +1,14 @@
+{% extends "main.html.twig" %}
+
+{% block classDepartments %}active{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <h1>Error !</h1>
+        <p>Table chair is missing -
+            <a style = "margin: 0; padding: 0; border: 0;" href="/?controller=creeateDbStructure&action=index">Chek</a>
+            , or does not have content -
+            <a style = "margin: 0; padding: 0; border: 0;" href="/?controller=generateDbData&action=index">Chek</a>
+            . Use links, it's must help</p>
+    </div>
+{% endblock %}
