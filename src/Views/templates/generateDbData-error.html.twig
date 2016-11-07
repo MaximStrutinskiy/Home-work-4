@@ -1,0 +1,11 @@
+{% extends "main.html.twig" %}
+
+{% block classCreateData %}active{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <h1>Minimum data set table - is generated</h1>
+        <p>Tables were filled with a minimum of data</p>
+        <a href="/?controller=generateDbData&action=generateStudentData"><i class="glyphicon glyphicon-plus"></i><b>Generate more students</b></a>
+    </div>
+{% endblock %}
