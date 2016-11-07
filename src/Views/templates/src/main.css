@@ -44,7 +44,8 @@
     margin: 0 auto;
 }
 
-.content-section a{
+.content-section a,
+.table-section a{
     color: #f16868;
     display: inline-block;
     margin: 25px 10px;
@@ -59,23 +60,30 @@
 }
 
 .content-section a:hover,
-.content-section a:focus{
+.content-section a:focus,
+.table-section a:hover,
+.table-section a:focus{
     text-decoration: none;
 
     color: white;
     background: #f16868;
 }
 
-.content-section a b{
+.content-section a b,
+.table-section a b{
     padding-left: 5px;
 }
 
-.content-section a.active{
+.content-section a.active,
+.table-section a.active{
     color: white;
     background: #f16868;
 }
 
 /* table */
+.table-section{
+    text-align: center;
+}
 
 table{
     text-align: center;

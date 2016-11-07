@@ -1,0 +1,39 @@
+{% extends "main.html.twig" %}
+
+{% block classStudents %}active{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <h1>Show all Students</h1>
+        <p style="padding-bottom: 25px;">You can see all dada in table student</p>
+    </div>
+    <div class="col-md-12">
+        <div class="table-section">
+            <table class="table table-bordered">
+                <tr>
+                    <td>id_student</td>
+                    <td>firsst_name</td>
+                    <td>last_name</td>
+                    <td>email</td>
+                    <td>phone</td>
+                    <td>id_discipline</td>
+                    <td>Operation</td>
+                </tr>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.id_student }}</td>
+                        <td>{{ result.firsst_name }}</td>
+                        <td>{{ result.last_name }}</td>
+                        <td>{{ result.email }}</td>
+                        <td>{{ result.phone }}</td>
+                        <td>{{ result.id_discipline }}</td>
+                        <td>+ -</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <a class="active" href="?controller=generateDbData&action=generateStudentData"><i class="glyphicon glyphicon-plus"></i><b>Add more students</b></a>
+        </div>
+    </div>
+{% endblock %}
+
