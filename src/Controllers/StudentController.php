@@ -42,6 +42,31 @@ class StudentController
         return $this->twig->render($resultsTemplate, $resultsData);
     }
 
+    public function newAction()
+    {
+        if (isset($_POST['firsst_name'])) {
+            $this->repository->insert(
+                [
+                    'firsst_name'   => $_POST['firsst_name'],
+                    'last_name'     => $_POST['last_name'],
+                    'email'         => $_POST['email'],
+                    'phone'         => $_POST['phone'],
+                    'id_discipline' => $_POST['id_discipline']
+                ]
+            );
+            return $this->indexAction();
+        }
+        return $this->twig->render('students_form.html.twig',
+            [
+                'firsst_name' => '',
+                'last_name' => '',
+                'email' => '',
+                'phone' => '',
+                'id_discipline' => ''
+            ]
+        );
+    }
+
     public function deleteAction()
     {
         if (isset($_POST['id'])) {

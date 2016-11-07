@@ -70,6 +70,18 @@ class StudentRepository implements StudentInterface
         return $results;
     }
 
+    public function insert(array $studentData)
+    {
+        $statement = $this->connector->getPdo()->prepare('INSERT INTO `student` (`firsst_name`, `last_name`, `email`, `phone`, `id_discipline`) VALUES(:firsstName, :lastName, :email, :phone, :id_discipline)');
+        $statement->bindValue(':firsstName', $studentData['firsst_name']);
+        $statement->bindValue(':lastName', $studentData['last_name']);
+        $statement->bindValue(':email', $studentData['email']);
+        $statement->bindValue(':phone', $studentData['phone']);
+        $statement->bindValue(':id_discipline', $studentData['id_discipline']);
+
+        return $statement->execute();
+    }
+
     public function remove(array $studentData)
     {
         $statement = $this->connector->getPdo()->prepare("DELETE FROM student WHERE id_student = :id");
