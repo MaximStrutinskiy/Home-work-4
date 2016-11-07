@@ -70,4 +70,12 @@ class StudentRepository implements StudentInterface
         return $results;
     }
 
+    public function remove(array $studentData)
+    {
+        $statement = $this->connector->getPdo()->prepare("DELETE FROM student WHERE id_student = :id");
+
+        $statement->bindValue(':id', $studentData['id'], \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
 }

@@ -96,3 +96,25 @@ table tr:first-child td{
     font-weight:bold;
     color: white;
 }
+
+a.table-link{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+a.table-link:hover{
+    background: transparent;
+    color: #f16868;
+}
+
+/* button */
+input.input-delete{
+    background: #f16868;
+    padding: 10px 25px;
+    box-shadow: none;
+    border: 2px solid #f16868;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}

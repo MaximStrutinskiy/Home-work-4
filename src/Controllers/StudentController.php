@@ -41,4 +41,14 @@ class StudentController
 
         return $this->twig->render($resultsTemplate, $resultsData);
     }
+
+    public function deleteAction()
+    {
+        if (isset($_POST['id'])) {
+            $id = (int) $_POST['id'];
+            $this->repository->remove(['id' => $id]);
+            return $this->indexAction();
+        }
+        return $this->twig->render('student_delete.html.twig', array('student_id' => $_GET['id']));
+    }
 }
