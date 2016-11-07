@@ -28,9 +28,10 @@ class StudentRepository implements StudentInterface
         $results = [];
         while ($result = $statement->fetch()) {
             $results[] = [
-                'id_student' => $result['id_student']
+                'id_student' => $result['id_student'],
             ];
         }
+
         return $results;
     }
 
@@ -49,6 +50,7 @@ class StudentRepository implements StudentInterface
             SELECT * FROM student
         ');
         $statement->execute();
+
         return $this->showResultsData($statement);
     }
 
@@ -63,7 +65,7 @@ class StudentRepository implements StudentInterface
                 'last_name' => $result['last_name'],
                 'email' => $result['email'],
                 'phone' => $result['phone'],
-                'id_discipline' => $result['id_discipline']
+                'id_discipline' => $result['id_discipline'],
             ];
         }
 
@@ -84,9 +86,49 @@ class StudentRepository implements StudentInterface
 
     public function remove(array $studentData)
     {
-        $statement = $this->connector->getPdo()->prepare("DELETE FROM student WHERE id_student = :id");
+        $statement = $this->connector->getPdo()->prepare('DELETE FROM student WHERE id_student = :id');
 
         $statement->bindValue(':id', $studentData['id'], \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function find($id)
+    {
+        $statement = $this->connector->getPdo()->prepare('SELECT * FROM student WHERE id_student = :id LIMIT 1');
+        $statement->bindValue(':id', (int) $id, \PDO::PARAM_INT);
+        $statement->execute();
+        $studentsData = $this->fetchStudentData($statement);
+
+        return $studentsData[0];
+    }
+
+    private function fetchStudentData($statement)
+    {
+        $results = [];
+        while ($result = $statement->fetch()) {
+            $results[] = [
+                'id_student' => $result['id_student'],
+                'firsst_name' => $result['firsst_name'],
+                'last_name' => $result['last_name'],
+                'email' => $result['email'],
+                'phone' => $result['phone'],
+                'id_discipline' => $result['id_discipline'],
+            ];
+        }
+
+        return $results;
+    }
+
+    public function update(array $studentData)
+    {
+        $statement = $this->connector->getPdo()->prepare('UPDATE student SET firsst_name = :firstName, last_name = :lastName, email = :email, phone = :phone, id_discipline = :id_discipline WHERE id_student = :id_student');
+        $statement->bindValue(':firstName', $studentData['firsst_name'], \PDO::PARAM_STR);
+        $statement->bindValue(':lastName', $studentData['last_name'], \PDO::PARAM_STR);
+        $statement->bindValue(':email', $studentData['email'], \PDO::PARAM_STR);
+        $statement->bindValue(':phone', $studentData['phone'], \PDO::PARAM_INT);
+        $statement->bindValue(':id_discipline', $studentData['id_discipline'], \PDO::PARAM_INT);
+        $statement->bindValue(':id_student', $studentData['id_student'], \PDO::PARAM_INT);
 
         return $statement->execute();
     }

@@ -7,25 +7,20 @@
         <h1>Add new student</h1>
         <p style="padding-bottom: 25px;">Enter data's in input and press button</p>
         <form method="POST" action="#">
-            <div class="col-md-6">
-                <label for="firsst_name">First Name:</label>
-                <input class="form-control" type="text" id="firsst_name" name="firsst_name" value="{{ firsst_name }}">
+            <div class="col-md-12">
+                <input class="form-control" placeholder="First Name:" type="text" id="firsst_name" name="firsst_name" value="{{ firsst_name }}">
             </div>
-            <div class="col-md-6">
-                <label for="last_name">Last Name:</label>
-                <input class="form-control" type="text" id="last_name" name="last_name" value="{{ last_name }}">
+            <div class="col-md-12">
+                <input class="form-control" placeholder="Last Name:" type="text" id="last_name" name="last_name" value="{{ last_name }}">
             </div>
-            <div class="col-md-6">
-                <label for="email">Email:</label>
-                <input class="form-control" type="text" id="email" name="email" value="{{ email }}">
+            <div class="col-md-12">
+                <input class="form-control" placeholder="Email:" type="text" id="email" name="email" value="{{ email }}">
             </div>
-            <div class="col-md-6">
-                <label for="phone">Phone:</label>
-                <input class="form-control" type="text" id="phone" name="phone" value="{{ phone }}">
+            <div class="col-md-12">
+                <input class="form-control" placeholder="Phone:" type="text" id="phone" name="phone" value="{{ phone }}">
             </div>
-            <div class="col-md-6">
-                <label for="id_discipline">Id discipline:</label>
-                <input class="form-control" type="text" id="id_discipline" name="id_discipline" value="{{ id_discipline }}">
+            <div class="col-md-12">
+                <input class="form-control" placeholder="Id discipline:" type="text" id="id_discipline" name="id_discipline" value="{{ id_discipline }}">
             </div>
             <div class="col-md-12">
                 <a href="?controller=student&action=index"><i class="glyphicon glyphicon-remove-sign"></i><b>No, go Back</b></a>

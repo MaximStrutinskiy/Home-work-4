@@ -108,7 +108,7 @@ a.table-link:hover{
     color: #f16868;
 }
 
-/* button */
+/* button, inputs */
 input.input-delete{
     background: #f16868;
     padding: 10px 25px;
@@ -117,4 +117,15 @@ input.input-delete{
     color: white;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.form-control{
+    margin-bottom: 20px;
+    text-align: center;
+}
+.form-control:focus{
+    border-color: #f16868;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(233, 63, 67, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(233, 97, 203, 0.6);
 }

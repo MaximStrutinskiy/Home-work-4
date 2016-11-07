@@ -30,7 +30,6 @@ class StudentController
         $results_chose = $this->repository->chooseTemplate($results_check);
 
         if ($results_chose) {
-
             $resultsDataQuery = $this->repository->showTable();
             $resultsData = ['results' => $resultsDataQuery];
 
@@ -47,22 +46,54 @@ class StudentController
         if (isset($_POST['firsst_name'])) {
             $this->repository->insert(
                 [
-                    'firsst_name'   => $_POST['firsst_name'],
-                    'last_name'     => $_POST['last_name'],
-                    'email'         => $_POST['email'],
-                    'phone'         => $_POST['phone'],
-                    'id_discipline' => $_POST['id_discipline']
+                    'firsst_name' => $_POST['firsst_name'],
+                    'last_name' => $_POST['last_name'],
+                    'email' => $_POST['email'],
+                    'phone' => $_POST['phone'],
+                    'id_discipline' => $_POST['id_discipline'],
                 ]
             );
+
             return $this->indexAction();
         }
+
         return $this->twig->render('students_form.html.twig',
             [
                 'firsst_name' => '',
                 'last_name' => '',
                 'email' => '',
                 'phone' => '',
-                'id_discipline' => ''
+                'id_discipline' => '',
+            ]
+        );
+    }
+
+    public function editAction()
+    {
+        if (isset($_POST['firsst_name'])) {
+            $this->repository->update(
+                [
+                    'firsst_name' => $_POST['firsst_name'],
+                    'last_name' => $_POST['last_name'],
+                    'email' => $_POST['email'],
+                    'phone' => $_POST['phone'],
+                    'id_discipline' => $_POST['id_discipline'],
+                    'id_student' => (int) $_GET['id'],
+                ]
+            );
+
+            return $this->indexAction();
+        }
+
+        $studentData = $this->repository->find((int) $_GET['id']);
+
+        return $this->twig->render('students_form.html.twig',
+            [
+                'firsst_name' => $studentData['firsst_name'],
+                'last_name' => $studentData['last_name'],
+                'email' => $studentData['email'],
+                'phone' => $studentData['phone'],
+                'id_discipline' => $studentData['id_discipline'],
             ]
         );
     }
@@ -72,8 +103,10 @@ class StudentController
         if (isset($_POST['id'])) {
             $id = (int) $_POST['id'];
             $this->repository->remove(['id' => $id]);
+
             return $this->indexAction();
         }
+
         return $this->twig->render('student_delete.html.twig', array('student_id' => $_GET['id']));
     }
 }

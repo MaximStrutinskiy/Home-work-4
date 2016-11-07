@@ -29,7 +29,7 @@
                         <td>{{ result.id_discipline }}</td>
                         <td>
                             <a class="table-link" href="?controller=student&action=delete&id={{ result.id_student }}"><i class="glyphicon glyphicon-remove-sign"></i></a>
-                            <a class="table-link" href="#"><i class="glyphicon glyphicon-wrench"></i></a>
+                            <a class="table-link" href="?controller=student&action=edit&id={{ result.id_student }}"><i class="glyphicon glyphicon-wrench"></i></a>
                         </td>
                     </tr>
                 {% endfor %}

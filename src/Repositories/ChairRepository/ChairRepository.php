@@ -4,7 +4,7 @@ namespace Repositories\ChairRepository;
 
 use Repositories\Connector;
 
-class ChairRepository implements  ChairInterface
+class ChairRepository implements ChairInterface
 {
     public $connector;
 
@@ -49,6 +49,7 @@ class ChairRepository implements  ChairInterface
             SELECT * FROM chair
         ');
         $statement->execute();
+
         return $this->showResultsData($statement);
     }
 
@@ -59,11 +60,10 @@ class ChairRepository implements  ChairInterface
             $results[] = [
                 'id_chair' => $result['id_chair'],
                 'name' => $result['name'],
-                'id_university' => $result['id_university']
+                'id_university' => $result['id_university'],
             ];
         }
 
         return $results;
     }
-
 }

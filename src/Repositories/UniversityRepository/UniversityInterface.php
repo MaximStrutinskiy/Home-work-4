@@ -9,5 +9,4 @@ interface UniversityInterface
     public function showTable();
 
     public function chooseTemplate($results);
-
 }

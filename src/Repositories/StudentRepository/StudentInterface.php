@@ -9,5 +9,4 @@ interface StudentInterface
     public function chooseTemplate($results);
 
     public function showTable();
-
 }

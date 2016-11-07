@@ -49,6 +49,7 @@ class UniversityRepository implements UniversityInterface
             SELECT * FROM university
         ');
         $statement->execute();
+
         return $this->showResultsData($statement);
     }
 
@@ -60,7 +61,7 @@ class UniversityRepository implements UniversityInterface
                 'id_university' => $result['id_university'],
                 'name' => $result['name'],
                 'city' => $result['city'],
-                'site' => $result['site']
+                'site' => $result['site'],
             ];
         }
 
