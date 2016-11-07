@@ -51,9 +51,11 @@ class GenerateDbDataController
         return $this->twig->render($resultsTemplate, ['index' => $resultsData]);
     }
 
-    public function generateStudentDataAction()
+    public function generateStudentDataAction($limit = 20)
     {
-        $this->repository->generateStudentData();
+        for ($i = 0; $i < $limit; ++$i) {
+            $this->repository->generateStudentData();
+        }
 
         $resultsData = array();
         $resultsTemplate = 'generateStudentData.html.twig';

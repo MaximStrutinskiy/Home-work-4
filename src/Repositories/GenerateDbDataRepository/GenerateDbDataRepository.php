@@ -109,24 +109,19 @@ class GenerateDbDataRepository implements GenerateDbDataInterface
         return $statement;
     }
 
-    public function generateStudentData($limit = 10)
+    public function generateStudentData()
     {
         $faker = Faker::create();
-
-        for ($i=0; $i < $limit; $i++) {
-            $statement = $this->connector->getPdo()->prepare('
-                INSERT INTO `student` (`firsst_name`, `last_name`, `email`, `phone`, `id_discipline`) VALUES (\':firstName\', \':lastName\', \':email\', \':phone\', \':discipline\');
+        $statement = $this->connector->getPdo()->prepare('
+                INSERT INTO `student` (`firsst_name`, `last_name`, `email`, `phone`, `id_discipline`) VALUES (:firstName, :lastName, :email, :phone, :discipline);
             ');
+        $statement->bindValue(':firstName', $faker->firstName, \PDO::PARAM_STR);
+        $statement->bindValue(':lastName', $faker->lastName, \PDO::PARAM_STR);
+        $statement->bindValue(':email', $faker->email, \PDO::PARAM_STR);
+        $statement->bindValue(':phone', $faker->phoneNumber, \PDO::PARAM_INT);
+        $statement->bindValue(':discipline', $faker->numberBetween($min = 1, $max = 6), \PDO::PARAM_INT);
+        $statement->execute();
 
-            $statement->bindValue(':firstName', $faker->firstName, \PDO::PARAM_STR);
-            $statement->bindValue(':lastName', $faker->lastName, \PDO::PARAM_STR);
-            $statement->bindValue(':email', $faker->email, \PDO::PARAM_STR);
-            $statement->bindValue(':phone', $faker->phoneNumber, \PDO::PARAM_INT);
-            $statement->bindValue(':discipline', $faker->numberBetween($min = 1, $max = 6), \PDO::PARAM_INT);
-            $statement->execute();
-
-            return $statement;
-        }
+        return $statement;
     }
-
 }
