@@ -5,11 +5,6 @@ namespace Repositories\GenerateDbDataRepository;
 use Repositories\Connector;
 use Faker\Factory as Faker;
 
-//$faker = Faker\Factory::create();
-//for ($i=0; $i < 10; $i++) {
-//    echo $faker->name, "\n";
-//}
-
 class GenerateDbDataRepository implements GenerateDbDataInterface
 {
     public $connector;

@@ -74,3 +74,17 @@
     color: white;
     background: #f16868;
 }
+
+/* table */
+
+table{
+    text-align: center;
+}
+table tr:first-child td{
+    background: #f16868;
+}
+
+table tr:first-child td{
+    font-weight:bold;
+    color: white;
+}

@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Repositories\GenerateDbDataRepository\GenerateDbDataRepository;
+use Faker\Factory as Faker;
 
 class GenerateDbDataController
 {
@@ -51,15 +52,17 @@ class GenerateDbDataController
         return $this->twig->render($resultsTemplate, ['index' => $resultsData]);
     }
 
-    public function generateStudentDataAction($limit = 20)
+    public function generateStudentDataAction()
     {
+        $faker = Faker::create();
+        $limit = $faker->numberBetween($min = 1, $max = 50);
+
         for ($i = 0; $i < $limit; ++$i) {
             $this->repository->generateStudentData();
         }
 
-        $resultsData = array();
         $resultsTemplate = 'generateStudentData.html.twig';
 
-        return $this->twig->render($resultsTemplate, ['index' => $resultsData]);
+        return $this->twig->render($resultsTemplate, ['index' => $limit]);
     }
 }
