@@ -81,7 +81,7 @@ class CreeateDbStructureRepository implements CreeateDbStructureInterface
     public function genContDbTableUniversity()
     {
         $statement = $this->connector->getPdo()->prepare('
-            INSERT INTO `university` VALUES (1,\'GeekHub\',\'Cherkasi\',\'www.geekhub.ck.ua\');
+            INSERT INTO `university` VALUES (1,\'GeekHub\',\'Cherkasi\',\'www.geekhub.ck.ua\'),(2,\'LoftBlog\',\'Sankt-Piterburg\',\'www.loftblog.com\');
         ');
         $statement->execute();
 
