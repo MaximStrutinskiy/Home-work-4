@@ -103,6 +103,16 @@ class StudentRepository implements StudentInterface
         return $studentsData[0];
     }
 
+    public function search(array $search)
+    {
+        $statement = $this->connector->getPdo()->prepare('SELECT * FROM student WHERE firsst_name = :search');
+        $statement->bindValue(':search', $search['search'], \PDO::PARAM_STR);
+        $statement->execute();
+        $studentsData = $this->fetchStudentData($statement);
+
+        return $studentsData;
+    }
+
     private function fetchStudentData($statement)
     {
         $results = [];

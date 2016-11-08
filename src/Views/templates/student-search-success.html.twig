@@ -1,0 +1,57 @@
+{% extends "main.html.twig" %}
+
+{% block classSearch %}active{% endblock %}
+
+{% block content %}
+    <div style = "text-align: center; padding: 15px">
+        <h1>Search students</h1>
+        <p style="padding-bottom: 25px;">Use form for search students</p>
+    </div>
+    <div class="col-md-12">
+        <form method="POST" action="#" class="form-student">
+            <input id="form-search"  type="text" value="" name="search" placeholder="Enter student data">
+            <input class="input-delete" type="submit" value="Search">
+        </form>
+    </div>
+
+    {% if results %}
+        <div class="col-md-12">
+            <div class="table-section">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>id_student</td>
+                        <td>firsst_name</td>
+                        <td>last_name</td>
+                        <td>email</td>
+                        <td>phone</td>
+                        <td>id_discipline</td>
+                        <td>Operation</td>
+                    </tr>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result.id_student }}</td>
+                            <td>{{ result.firsst_name }}</td>
+                            <td>{{ result.last_name }}</td>
+                            <td>{{ result.email }}</td>
+                            <td>{{ result.phone }}</td>
+                            <td>{{ result.id_discipline }}</td>
+                            <td>
+                                <a class="table-link" href="?controller=student&action=delete&id={{ result.id_student }}"><i class="glyphicon glyphicon-remove-sign"></i></a>
+                                <a class="table-link" href="?controller=student&action=edit&id={{ result.id_student }}"><i class="glyphicon glyphicon-wrench"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if results == false%}
+        <p style = "text-align: center;">No results. Check the form and press SEARCH <br />
+        <h6 style = "text-align: center;">*example - "Josie"</h6>
+        </p>
+    {% endif %}
+
+
+{% endblock %}
+

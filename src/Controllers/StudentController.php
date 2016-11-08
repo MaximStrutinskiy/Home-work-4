@@ -41,6 +41,32 @@ class StudentController
         return $this->twig->render($resultsTemplate, $resultsData);
     }
 
+    public function searchAction()
+    {
+        $resultsData = array();
+
+        $results_check = $this->repository->checkTables();
+        $results_chose = $this->repository->chooseTemplate($results_check);
+
+        if ($results_chose) {
+            if (isset($_POST['search'])) {
+                $search = $_POST['search'];
+            } else {
+                $search = '';
+            }
+
+            $resultsDataQuery = $this->repository->search(['search' => $search]);
+
+            $resultsData = ['results' => $resultsDataQuery];
+
+            $resultsTemplate = 'student-search-success.html.twig';
+        } else {
+            $resultsTemplate = 'student-error.html.twig';
+        }
+
+        return $this->twig->render($resultsTemplate, $resultsData);
+    }
+
     public function newAction()
     {
         if (isset($_POST['firsst_name'])) {
