@@ -52,7 +52,7 @@ class StudentController
             if (isset($_POST['search'])) {
                 $search = $_POST['search'];
             } else {
-                $search = '';
+                $search = 'no values';
             }
 
             $resultsDataQuery = $this->repository->search(['search' => $search]);

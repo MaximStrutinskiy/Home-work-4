@@ -105,7 +105,16 @@ class StudentRepository implements StudentInterface
 
     public function search(array $search)
     {
-        $statement = $this->connector->getPdo()->prepare('SELECT * FROM student WHERE firsst_name = :search');
+        $statement = $this->connector->getPdo()->prepare('
+          SELECT * FROM student WHERE
+          firsst_name LIKE :search "%" or
+          last_name LIKE :search "%" or
+          email LIKE :search "%" or
+          phone LIKE :search "%" or
+          id_discipline LIKE :search "%"
+          ');
+
+
         $statement->bindValue(':search', $search['search'], \PDO::PARAM_STR);
         $statement->execute();
         $studentsData = $this->fetchStudentData($statement);
