@@ -1,0 +1,11 @@
+{% extends "main.html.twig" %}
+
+{% block classCreateData %}active{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <h1>Generate more students!</h1>
+        <p><b style="color: #f16868;">{{ index }}</b> - students has been generated. Press the button, to Back</p>
+        <a href="/?controller=generateDbData&action=index"><i class="glyphicon glyphicon-chevron-left"></i><b>Back</b></a>
+    </div>
+{% endblock %}

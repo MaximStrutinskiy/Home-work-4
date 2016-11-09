@@ -1,0 +1,26 @@
+{% extends "main.html.twig" %}
+
+{% block classDepartments %}active{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <h1>Show all Chair's</h1>
+        <p style="padding-bottom: 25px;">You can see all dada in table chair</p>
+        <div class="table-section">
+            <table class="table table-bordered">
+                <tr>
+                    <td>id_chair</td>
+                    <td>name</td>
+                    <td>id_university</td>
+                </tr>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.id_chair }}</td>
+                        <td>{{ result.name }}</td>
+                        <td>{{ result.id_university }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

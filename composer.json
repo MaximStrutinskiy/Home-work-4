@@ -1,7 +1,19 @@
 {
     "name": "vendor/university",
-    "description": "database for university wits faculties and stu",
+    "description": "Database for university wits faculties and students",
     "type": "project",
     "license": "MaxovskiyLic",
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "src/Controllers",
+            "Repositories\\": "src/Repositories",
+            "Views\\": "src/Views"
+        }
+    },
+    "require": {
+	    "php":">=5.6",
+        "twig/twig": "^1.27",
+        "fzaninotto/faker": "^1.6",
+        "friendsofphp/php-cs-fixer": ">=1.12"
+    }
 }

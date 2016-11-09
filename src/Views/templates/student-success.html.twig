@@ -1,0 +1,43 @@
+{% extends "main.html.twig" %}
+
+{% block classStudents %}active{% endblock %}
+
+{% block content %}
+    <div style = "text-align: center; padding: 15px">
+        <h1>Show all Students</h1>
+        <p style="padding-bottom: 25px;">You can see all dada in table student</p>
+    </div>
+    <div class="col-md-12">
+        <div class="table-section">
+            <table class="table table-bordered">
+                <tr>
+                    <td>id_student</td>
+                    <td>firsst_name</td>
+                    <td>last_name</td>
+                    <td>email</td>
+                    <td>phone</td>
+                    <td>id_discipline</td>
+                    <td>Operation</td>
+                </tr>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.id_student }}</td>
+                        <td>{{ result.firsst_name }}</td>
+                        <td>{{ result.last_name }}</td>
+                        <td>{{ result.email }}</td>
+                        <td>{{ result.phone }}</td>
+                        <td>{{ result.id_discipline }}</td>
+                        <td>
+                            <a class="table-link" href="?controller=student&action=delete&id={{ result.id_student }}"><i class="glyphicon glyphicon-remove-sign"></i></a>
+                            <a class="table-link" href="?controller=student&action=edit&id={{ result.id_student }}"><i class="glyphicon glyphicon-wrench"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <a class="active" href="?controller=generateDbData&action=generateStudentData"><i class="glyphicon glyphicon-plus"></i><b>Add more students</b></a>
+            <a href="index.php?controller=student&action=new&id={{ result.id_student }}"><i class="glyphicon glyphicon-user"></i><b>Add student</b></a>
+        </div>
+    </div>
+{% endblock %}
+

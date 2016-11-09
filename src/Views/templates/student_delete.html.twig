@@ -1,0 +1,17 @@
+{% extends "main.html.twig" %}
+
+{% block classStudents %}active{% endblock %}
+
+{% block content %}
+<div class="content-section">
+    <h1>Student deletion</h1>
+    <p style="padding-bottom: 25px;">Are you sure you want to delete this student?</p>
+    <form method="POST" action="#">
+        <div class="row">
+            <a href="?controller=student&action=index"><i class="glyphicon glyphicon-remove-sign"></i><b>No, go Back</b></a>
+            <input type="hidden" id="student-id" name="id" value="{{ student_id }}"/>
+            <input class="input-delete" type="submit" value="Delete"/>
+        </div>
+    </form>
+</div>
+{% endblock %}

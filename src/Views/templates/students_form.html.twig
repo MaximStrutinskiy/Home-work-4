@@ -1,0 +1,31 @@
+{% extends "main.html.twig" %}
+
+{% block classStudents %}active{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <h1>Add new student</h1>
+        <p style="padding-bottom: 25px;">Enter data's in input and press button</p>
+        <form method="POST" action="#">
+            <div class="col-md-12">
+                <input class="form-control" placeholder="First Name:" type="text" id="firsst_name" name="firsst_name" value="{{ firsst_name }}">
+            </div>
+            <div class="col-md-12">
+                <input class="form-control" placeholder="Last Name:" type="text" id="last_name" name="last_name" value="{{ last_name }}">
+            </div>
+            <div class="col-md-12">
+                <input class="form-control" placeholder="Email:" type="text" id="email" name="email" value="{{ email }}">
+            </div>
+            <div class="col-md-12">
+                <input class="form-control" placeholder="Phone:" type="text" id="phone" name="phone" value="{{ phone }}">
+            </div>
+            <div class="col-md-12">
+                <input class="form-control" placeholder="Id discipline:" type="text" id="id_discipline" name="id_discipline" value="{{ id_discipline }}">
+            </div>
+            <div class="col-md-12">
+                <a href="?controller=student&action=index"><i class="glyphicon glyphicon-remove-sign"></i><b>No, go Back</b></a>
+                <input class="input-delete" type="submit" value="Create">
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "main.html.twig" %}
+
+{% block classUniversity %}active{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <h1>Show all University's</h1>
+        <p style="padding-bottom: 25px;">You can see all dada in table university</p>
+        <div class="table-section">
+            <table class="table table-bordered">
+                <tr>
+                    <td>id_university</td>
+                    <td>name</td>
+                    <td>city</td>
+                    <td>site</td>
+                </tr>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.id_university }}</td>
+                        <td>{{ result.name }}</td>
+                        <td>{{ result.city }}</td>
+                        <td>{{ result.site }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
